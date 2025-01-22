@@ -30,4 +30,6 @@ jobs:
         continue-on-error: true
 
       - name: Run black (code formatter)
-        run: black .
+        uses: cytopia/docker-black@0.8
+        with:
+          path: 'src/'
