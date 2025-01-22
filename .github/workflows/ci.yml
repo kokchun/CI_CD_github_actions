@@ -1,0 +1,19 @@
+name: Python project continous integration (CI)
+
+# trigger
+# will run when event happens (e.g. push, pull request)
+on: 
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code to the runner (VM)
+              uses: actions/checkout@v3 # predefined actions in Github
+
+            - name: Setup python
+              uses: actions/setup-python@v4   
