@@ -9,3 +9,9 @@ repos:
     hooks:
       - id: flake8 
         args: ["--max-line-length=88"]
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.2.1
+    hooks:
+      - id: ruff
+        args: ["--fix"]
