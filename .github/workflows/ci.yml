@@ -1,37 +1,30 @@
-name: Python project continous integration (CI)
+name: Python project CI
 
-# trigger
-# will run when event happens (e.g. push, pull request)
 on:
   pull_request:
     branches:
       - main
 
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code to the runner (VM)
-        uses: actions/checkout@v3 # predefined actions in Github
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Setup python
+      - name: Setup Python
         uses: actions/setup-python@v5.3.0
         with:
           python-version: 3.11
-
+ 
       - name: Install dependencies
-        run: | # multiline commands
+        run: |
           pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run flake8 (code linter)
+      - name: Run flake8
         run: flake8 --exclude=.venv src/
-        continue-on-error: true
 
-      - name: Run black (code formatter)
-        uses: cytopia/docker-black@0.8
-        with:
-          path: 'src/'
-
-        continue-on-error: true
+      - name: Run black
+        run: black --check src/
