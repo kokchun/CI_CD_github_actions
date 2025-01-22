@@ -5,13 +5,10 @@ on:
     branches:
       - main
 
-permissions:
-  contents: write  # Allows pushing changes back
-
 jobs:
   test:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Check out PR's head branch
         uses: actions/checkout@v3
@@ -36,10 +33,7 @@ jobs:
       - name: Run black
         run: black src/
 
-      - name: Commit and push changes
-        uses: actions-x/commit@v6
-        with:
-          message: "Auto-format with Black"
-          branch: ${{ github.event.pull_request.head.ref }}
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit changes
+        uses: kokchun/CI_CD_github_actions
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
