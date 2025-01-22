@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,7 +17,7 @@ jobs:
         uses: actions/setup-python@v5.3.0
         with:
           python-version: 3.11
-
+ 
       - name: Install dependencies
         run: |
           pip install --upgrade pip
@@ -29,8 +29,3 @@ jobs:
 
       - name: Run black
         run: black src/
-
-      - name: Commit changes
-        uses: kokchun/CI_CD_github_actions@main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
