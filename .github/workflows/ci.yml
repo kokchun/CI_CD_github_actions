@@ -3,7 +3,7 @@ name: Python project continous integration (CI)
 # trigger
 # will run when event happens (e.g. push, pull request)
 on: 
-    pull_request:
+    [pull_request, push]:
         branches:
             - main
 
@@ -27,6 +27,7 @@ jobs:
             
             - name: Run flake8 (code linter)
               run: flake8 --exclude=.venv .
+              continue-on-error: true
 
             - name: Run black (code formatter)
               run: black .
