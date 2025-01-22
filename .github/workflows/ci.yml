@@ -28,4 +28,4 @@ jobs:
         continue-on-error: true
 
       - name: Run black
-        run: black src/
+        run: black --check src/
