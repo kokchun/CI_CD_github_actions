@@ -16,4 +16,17 @@ jobs:
               uses: actions/checkout@v3 # predefined actions in Github
 
             - name: Setup python
-              uses: actions/setup-python@v4   
+              uses: actions/setup-python@v5.3.0   
+              with:
+                python-version: 3.11
+
+            - name: Install dependencies
+              run: | # multiline commands
+                pip install --upgrade pip
+                pip install -r requirements.txt
+            
+            - name: Run flake8 (code linter)
+              run: flake8 --exclude=.venv .
+
+            - name: Run black (code formatter)
+              run: black .
