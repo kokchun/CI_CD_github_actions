@@ -36,4 +36,4 @@ jobs:
         uses: actions-x/commit@v6
         with:
           message: "Auto-format with Black"
-          branch: ${{ github.head_ref }}  
+          branch: ${{ github.event.pull_request.head.ref }}
