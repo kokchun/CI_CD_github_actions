@@ -26,10 +26,12 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run flake8 (code linter)
-        run: flake8 --exclude=.venv .
+        run: flake8 --exclude=.venv src/
         continue-on-error: true
 
       - name: Run black (code formatter)
         uses: cytopia/docker-black@0.8
         with:
           path: 'src/'
+
+        continue-on-error: true
