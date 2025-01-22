@@ -30,8 +30,10 @@ jobs:
         continue-on-error: true
 
       - name: Run black (code formatter)
-        uses: cytopia/docker-black@0.8
-        with:
-          path: 'src/'
+        run: black src/
 
-        continue-on-error: true
+      - name: Commit and Push Changes
+        uses: actions-x/commit@v6
+        with:
+          message: "Auto-format with Black"
+          push: true
