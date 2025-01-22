@@ -31,6 +31,6 @@ jobs:
         run: black src/
 
       - name: Commit changes
-        uses: kokchun/CI_CD_github_actions
+        uses: kokchun/CI_CD_github_actions@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
