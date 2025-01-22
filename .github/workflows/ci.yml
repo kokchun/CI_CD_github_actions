@@ -25,7 +25,6 @@ jobs:
 
       - name: Run flake8
         run: flake8 --exclude=.venv src/
-        continue-on-error: true
 
       - name: Run black
         run: black --check src/
