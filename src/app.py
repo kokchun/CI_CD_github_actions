@@ -5,6 +5,8 @@ api_key = st.secrets["api"]["OPEN_WEATHER_MAP_API"]
 
 st.title("Weather information")
 
+st.markdown("You will find very nice weather info from here")
+
 city = st.text_input("Enter city name:", "Oslo")
 
 
