@@ -17,14 +17,14 @@ jobs:
         uses: actions/setup-python@v5.3.0
         with:
           python-version: 3.11
- 
+
       - name: Install dependencies
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt
 
       - name: Run flake8
-        run: flake8 --exclude=.venv src/
+        run: flake8 --exclude=.venv --max-line-length=88 src/
 
       - name: Run black
         run: black --check src/
